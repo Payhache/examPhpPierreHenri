@@ -1,3 +1,5 @@
+<!-- TODO ajouter contraintes input sur HTML -->
+
 <?php
 include_once('parts/includes.php');
 
