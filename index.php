@@ -28,3 +28,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <?php
             displayErrors($errors);
 ?>
+
+<h1>Cv de Pierre-Henri</h1>
+
+<h2> Compétences  </h2>
+
+<h2> Expériences </h2>
+

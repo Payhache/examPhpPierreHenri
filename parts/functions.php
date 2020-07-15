@@ -36,9 +36,9 @@ function logUser($dataBase){
     // Fonction qui affiche les erreurs
     function displayErrors($errors){
     if (count($errors) != 0) {
-        echo(' <h2>Erreur(s) lors de la dernière soumission du formulaire : </h2>');
+        echo(' <h5>Erreur(s) lors de la dernière soumission du formulaire : </h5>');
         foreach ($errors as $error) {
-            echo('<div class="error">' . $error . '</div>');
+            echo('<div class="error m-2 badge badge-info">' . $error . '</div>');
         }
     }
 }
