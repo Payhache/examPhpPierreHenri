@@ -75,12 +75,23 @@ function displayErrors($errors){
 //################################################
 // Fonction de recherches dans la BDD
 //#################################################
+
+// ###################EXPERIENCE#######################
     // Fonction pour récuperer les différentes experiences :
     function getXp($dataBase){
         $requestXp = $dataBase->prepare('SELECT * FROM experience ');
         $requestXp->execute();
         return $requestXp;
     }
+// Fonction pour récuperer une Xp spécifique :
+    function getXpById($dataBase, $id) {
+        $requestXp = $dataBase->prepare('SELECT * FROM experience WHERE id=:id');
+        $requestXp->execute([
+            'id' => $id
+        ]);
+        return $requestXp;
+    }
+// ###################COMPETENCES #######################        
     // Fonction pour récuperer les différentes compétences :
     function getComp($dataBase){
         $requestComp = $dataBase->prepare('SELECT * FROM competence ');
@@ -123,8 +134,12 @@ function deleteComp($dataBase, $id) {
 
 // Ajout d'une Experience :
 function addXp($dataBase){
+    if(!isset($_POST['date_fin'])){
+        $_POST['date_fin']==null;
+    }
+
     $newXp = $dataBase->prepare('INSERT INTO experience(titre, description, date_debut, date_fin)
-                                VALUES(:titre, :description, :date_debut, :date_fin=null)');
+                                VALUES(:titre, :description, :date_debut, :date_fin)');
     $newXp->execute([
         'titre' => $_POST['titre'],
         'description' => $_POST['description'],
@@ -138,5 +153,19 @@ function deleteXp($dataBase, $id) {
     $res->execute(['id'=> $id]);
    }
    
-// Edition d'une compétence
+// Edition de l'xp :
+function editXp($dataBase, $id){
+    if(!isset($_POST['date_fin'])){
+        $_POST['date_fin']==null;
+    }
+    $editedXp = $dataBase->prepare('UPDATE experience SET titre =:titre, description =:description, date_debut=:date_debut, date_fin=:date_fin WHERE id =:id');
+    $editedXp->execute([
+        'titre' => $_POST['titre'],
+        'description' => $_POST['description'],
+        'date_debut' => $_POST['date_debut'],
+        'date_fin' => $_POST['date_fin'],
+        'id' => $id
+    ]);
+}
+
 ?>

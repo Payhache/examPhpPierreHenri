@@ -25,9 +25,9 @@ $comps = getComp($dataBase)->fetchAll();
 <div class="login">
     <form class="m-2"action="" method="post">
         <label for="login">Mail</label>
-        <input type="mail" name="email">
+        <input type="mail" name="email" required>
         <label for="password">password</label>
-        <input type="password" name="mot_de_passe">
+        <input type="password" name="mot_de_passe" required>
         <input type="submit">
     </form>
 </div>
@@ -37,16 +37,12 @@ $comps = getComp($dataBase)->fetchAll();
             displayErrors($errors);
 ?>
 
-<h1>Cv de Pierre-Henri</h1>
-
-<i class="fas fa-star"></i>
-<i class="far fa-star"></i>
+<h1 class="text-center">Cv de Pierre-Henri</h1>
 
 
 <h2> Compétences  </h2>
 <?php foreach($comps as $comp) {
-    echo('<h3> Maîtrise de la compétence : '.$comp['titre'].'</h3>');
-    echo('<h3> Avec un niveau de : ' .$comp['note']. ' / 5</h3>');
+    echo('<h5> Maîtrise de la compétence : <br>'.$comp['titre'].'</h5>');
     for ($i=0; $i < $comp['note'] ; $i++) { 
         echo('<i class="fas fa-star"></i>');
     }
@@ -59,9 +55,8 @@ $comps = getComp($dataBase)->fetchAll();
 <h2> Expériences </h2>
 
 <?php foreach($xps as $xp) {
-    echo('<h3>'.$xp['titre'].'</h3>');
-    echo('<h3> Période du : ' .$xp['date_debut']. ' au '.$xp['date_fin']. '</h3>');
+    echo('<h5> Entreprise :'.$xp['titre'].'</h5>');
+    echo('<h5> Période du : ' .$xp['date_debut']. ' au '.$xp['date_fin']. '</h5>');
     echo('<p>'.$xp['description'].'</p>');
 } 
-
-
+?>

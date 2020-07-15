@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <form action="" method="post">
 <label for="titre">Ajout de la compétence</label>
-<input type="text" name="titre" placeholder="Compétence"
+<input type="text" name="titre" placeholder="Compétence" required
             <?php echo('value="'.$resultCompSelected['titre'].'"');
             ?>
             <?php if(isset($_POST['titre'])){
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }?>>
 <br>
 <label for="note">Ajout de la maitrise de la compétence</label>
-<input type="number" name="note"
+<input type="number" name="note" required
             <?php echo('value="'.$resultCompSelected['note'].'"');
             ?>
             <?php if(isset($_POST['note'])){

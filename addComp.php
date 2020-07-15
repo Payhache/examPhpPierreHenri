@@ -17,13 +17,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <form action="" method="post">
 <label for="titre">Ajout de la compétence</label>
-<input type="text" name="titre" placeholder="Compétence"
+<input type="text" name="titre" placeholder="Compétence" required
             <?php if(isset($_POST['titre'])){
             echo('value="'.$_POST['titre'].'"');
             }?>>
 <br>
 <label for="note">Ajout de la maitrise de la compétence</label>
-<input type="number" name="note"
+<input type="number" name="note" required
             <?php if(isset($_POST['note'])){
             echo('value="'.$_POST['note'].'"');
             }?>>
