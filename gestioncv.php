@@ -32,7 +32,8 @@ $comps = getComp($dataBase)->fetchAll();
             echo('<td>'.$comp['note'].'</td>');
             echo('<td>
             <a class="btn btn-info"href="editComp.php?id='.$comp['id'].'">modifier</a>
-            <a class="btn btn-warning"href="#">Supprimer</a></td>');
+            <a class="btn btn-warning"href="deleteComp.php?id='.$comp['id'].'">supprimer</a>
+            </td>');
             echo('<tr>');
         }
         ?>

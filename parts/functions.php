@@ -96,7 +96,7 @@ function displayErrors($errors){
         return $requestComp;
     }
 //################################################
-// Fonction d'ajout en BDD
+// Fonction qui modifient la  BDD
 //#################################################
 // Ajout compétence :
 function addComp($dataBase){
@@ -107,14 +107,20 @@ function addComp($dataBase){
     ]);
 }
 // Edition d'une compétence :
-function editComp($dataBase){
+function editComp($dataBase, $id){
     $editedComp = $dataBase->prepare('UPDATE competence SET titre =:titre, note =:note WHERE id =:id');
     $editedComp->execute([
         'titre' => $_POST['titre'],
         'note' => $_POST['note'],
+        'id' => $id
     ]);
-
 }
+// Suppression d'une compétence :
+function deleteComp($dataBase, $id) {
+ $res = $dataBase->prepare('DELETE FROM competence WHERE id = :id');
+ $res->execute(['id'=> $id]);
+}
+
 //  Ajout d'une Experience :
 function addXp($dataBase){
     $newXp = $dataBase->prepare('INSERT INTO experience(titre, description, date_debut, date_fin)VALUES(:titre, :description, :date_debut, :date_fin)');
@@ -126,13 +132,5 @@ function addXp($dataBase){
     ]);
 }
 
-//################################################
-// Fonction de suppression en Bdd
-//#################################################
-
-function deletecomp($dataBase, $id) {
-    $compSelected = $dataBase->prepare('DELETE FROM competence WHERE id=:id');
-    $compSelected->execute(['id'=>$id]);
-}
 
 ?>

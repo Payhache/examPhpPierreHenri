@@ -12,9 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $returnValidation = valideFormComps($dataBase);
 	$errors = $returnValidation['errors'];
 	if(count($errors) === 0 ){
-        editComp($dataBase);
-        var_dump($_POST);
-        die();
+        editComp($dataBase, $_GET['id']);
 		header('Location: gestioncv.php');
 	}
 }
