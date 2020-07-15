@@ -42,4 +42,20 @@ function logUser($dataBase){
         }
     }
 }
+//################################################
+// Fonction de recherches dans la BDD
+//#################################################
+    // Fonction pour récuperer les différentes experiences :
+    function getXp($dataBase){
+        $requestXp = $dataBase->prepare('SELECT * FROM experience ');
+        $requestXp->execute();
+        return $requestXp;
+    }
+    // Fonction pour récuperer les différentes compétences :
+    function getComp($dataBase){
+        $requestComp = $dataBase->prepare('SELECT * FROM competence ');
+        $requestComp->execute();
+        return $requestComp;
+    }
+    
 ?>
