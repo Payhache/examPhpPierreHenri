@@ -53,19 +53,20 @@ $comps = getComp($dataBase)->fetchAll();
     </tr>
   </thead>
   <tbody>
-    <tr>
     <?php
         foreach ($xps as $xp) {
+          echo('<tr>');
             echo('<th scope="row">'.$xp['id'].'</th>');
             echo('<td>'.$xp['titre'].'</td>');
             echo('<td>'.$xp['description'].'</td>');
             echo('<td>'.$xp['date_debut'].'</td>');
             echo('<td>'.$xp['date_fin'].'</td>');
             echo('<td>
-            <a class="btn btn-info"href="editComp.php?id='.$xp['id'].'">modifier</a>
-            <a href="gestioncv.php">supprimer</a></td>');
+            <a class="btn btn-info"href="editXp.php?id='.$xp['id'].'">modifier</a>
+            <a class="btn btn-warning"href="deleteXp.php?id='.$xp['id'].'">supprimer</a>
+            </td>');
+            echo('<tr>');
         }
         ?>
-    </tr>
   </tbody>
 </table>

@@ -121,9 +121,10 @@ function deleteComp($dataBase, $id) {
  $res->execute(['id'=> $id]);
 }
 
-//  Ajout d'une Experience :
+// Ajout d'une Experience :
 function addXp($dataBase){
-    $newXp = $dataBase->prepare('INSERT INTO experience(titre, description, date_debut, date_fin)VALUES(:titre, :description, :date_debut, :date_fin)');
+    $newXp = $dataBase->prepare('INSERT INTO experience(titre, description, date_debut, date_fin)
+                                VALUES(:titre, :description, :date_debut, :date_fin=null)');
     $newXp->execute([
         'titre' => $_POST['titre'],
         'description' => $_POST['description'],
@@ -131,6 +132,11 @@ function addXp($dataBase){
         'date_fin' => $_POST['date_fin'],
     ]);
 }
-
-
+// Suppression de l'xp :
+function deleteXp($dataBase, $id) {
+    $res = $dataBase->prepare('DELETE FROM experience WHERE id = :id');
+    $res->execute(['id'=> $id]);
+   }
+   
+// Edition d'une compétence
 ?>
